@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CaosNews Tyler</title>
+  <link  rel="icon"   href="img/400dpiLogo.png" type="image/png" />
+  <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/estilos.css">
+
+  <script language="javascript" type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.min.js"></script>
+  <style>
+    li{
+      margin-left: 5px;
+    }
+    body{
+      background-color: #bdbdbd;
+    }
+    footer{
+      background-color: #797979;
+      height: 100px;
+      position: bottom;
+      bottom: 0;
+      height: 30%;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="container-fluid">
+      <header class="row">
+        <header class="col">          
+          <!--aquí empieza ventana emergente INICIAR SESION-->
+          <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#ventanaModal1" style="float: right;">Cerrar sesion</button>
+          
+          <div class="modal" id="ventanaModal1" tabindex="1" role="dialog" aria-labelledby="tituloVentana1" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 id="tituloVentana1">Está seguro?</h5>
+                  <button class="close" data-dismiss="model" aria-label="Cerrar">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+
+                </div>
+                  
+                <div class="modal-footer">
+                  <a class="btn btn-primary" href="CAOS NEWS.html" role="button" style="background-color: red;">Aceptar</a>
+                  <button class="btn btn-secondary" type="button" data-dismiss="modal">
+                    Cancelar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--aquí termina ventana emergente-->
+
+          <br/>
+          <div class="container">
+            <section class="row">
+              <a class="navbar-brand" href="xd.html"><img src="img/400dpiLogo.png" class="zoom" id="logo" style="height: 130px; width: 200px" alt="Logo Caos"></a>
+              <div class="col">
+                <br/>
+              <form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                <button type="button" class="btn btn-secondary" style=" margin-left: 5px;">Buscar</button>
+              </form>
+            </section>
+          <br/>
+        </header>
+      </header>
+      
+      <div class="row" style="background-color: #383c44;">
+        <div class="col-12">
+          <nav class="navbar navbar-expand-lg navbar-dark  bg-dark ">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation" style="margin: 0%;">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarText">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="CAOS NEWS.html">Inicio</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="CAOS NEWS 1politica.html">Política</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Economía</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Deportes</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Espectáculo</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Mundo</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Empresas</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Regionales</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#" style="float: right;">Perfil <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="CAOS NEWS periodistas.html">Periodistas</a>
+                </li>
+                <div style="float: right;">
+                  <img src="img/logo-instagram-3238899_640.png" alt="" width="10%" style="float: right; padding-right: 1%;padding-bottom: 1%;">
+                  <img src="img/facebook.png" alt="" width="10%" style="float: right; padding-right: 1%;padding-bottom: 1%;">
+                  <img src="img/twitter-gris.png" alt="" width="10%" style="float: right; padding-right: 1%;padding-bottom: 1%;">
+                </div>
+              </ul>
+            </div>
+          </nav>
+        </div>  
+      </div>  
+
+      
+      <div class="row">
+
+        <div class="col-11" style="background-color: white; margin-left: 3%;">
+          <form action="xd.html" id="formCont" method="post">
+            <br>
+            <div class="form-group">
+              <label for="txtNombre">Nombre</label>
+              <input type="text" class="form-control" id="txtNombre"  minlength="5" required placeholder="Ingrese su nombre">
+              <div class="invalid-feedback" id="eNombre"></div>
+            </div>
+
+            <hr class="my-4">
+
+            <div class="form-group">
+              <label for="txtEmail">E-Mail</label>                    
+              <input id="txtEmail" type="email" class="form-control" name="email" required placeholder="Correo">
+              <div class="invalid-feedback" id="eEmail"></div>
+            </div>
+
+            <hr class="my-4">
+
+            <div class="form-group">
+              <label for="txtMensaje">Mensaje</label>
+              <textarea class="form-control" id="txtMensaje" rows="12" required placeholder="Ingrese su Mensaje" minlength="10"></textarea>            
+              <div class="invalid-feedback" id="eMensaje"></div>
+              <div class="invalid-feedback" id="eMensaje"></div>
+            </div>
+
+            <hr class="my-4">
+            <div class="form-group">
+              <button class="btn btn-danger" type="submit" onclick="mensaje()">Enviar</button>
+              
+                
+              <!-- CANCELAR-->
+              <button class="btn btn-secondary" data-toggle="modal" data-target="#ventanaModal2" style="float: right;">Cancelar</button>
+              
+              <div class="modal" id="ventanaModal2" tabindex="1" role="dialog" aria-labelledby="tituloVentana1" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 id="tituloVentana2">Está seguro?</h5>
+                      <button class="close" data-dismiss="model" aria-label="Cerrar">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+    
+                    </div>
+                      
+                    <div class="modal-footer">
+                      <a class="btn btn-primary" href="xd.html" role="button" style="background-color: red;">Aceptar</a>
+                      <button class="btn btn-secondary" type="button" data-dismiss="modal">
+                        Cancelar
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- FIN CANCELAR-->
+            </div>
+
+          </form>
+          <br>
+          <div class="alert alert-danger" role="alert" hidden id="mensaje">
+            No enviado
+          </div>
+          <div class="alert alert-danger" role="alert" hidden id="mensaje1">
+            Se ha enviado con EXITO
+          </div>
+          <br>
+        </div>
+
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+      
+
+      <footer class="row">
+        <footer class="col-4">
+          <img src="img/400dpiLogo.png" style="height: 90%; width: 70%;">
+        </footer>
+        <footer class="col-4" style="margin-top: 2%;">
+          <a href="" style="color: rgb(241, 241, 241);"><h5>Contacto</h5></a>
+          <a href="" style="color: rgb(241, 241, 241);"><h5>Términos y condiciones</h5></a>
+          <a href="" style="color: rgb(241, 241, 241);"><h5>Política de privacidad</h5></a>
+          <a href="" style="color: rgb(241, 241, 241);"><h5>Tarifas de publicidad</h5></a>
+        </footer class="col-4" style="background-color: green;">
+
+        <footer class="col-4"style="margin-top: 2%; ">
+          <h6 style="margin-left: 30%">Llámanos: +569458467</h6>
+          <h6 style="margin-left: 30%">CaosNews@contacto.com</h6>
+          <h6 style="margin-left: 30%">© 2021 Caos News</h6>
+        </footer>
+
+      </footer>
+  </div>
+  <script src="js/jquery-3.6.0.js"></script>
+  <script src="js/popper.js"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="popup.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/validacion.js"></script>
+  <script src="js/validacion - iniciosesion.js"></script>
+  
+</body>
+</html>
