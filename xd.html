@@ -7,6 +7,8 @@
   <title>CaosNews Inicio</title>
   <link  rel="icon"   href="img/400dpiLogo.png" type="image/png" />
   <link rel="stylesheet" href="css/bootstrap.css">
+  <link rel="stylesheet" href="css/estilos.css">
+  <script language="javascript" type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.min.js"></script>
   <style>    
     li{
       margin-left: 5px;
@@ -24,114 +26,131 @@
     }
   </style>
 </head>
+
 <body>
   
   <div class="container-fluid">
     <header class="row">
       <header class="col">
         <!--aquí empieza ventana emergente REGISTRARSE-->
-        <form action="">
-          <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#ventanaModal1" style="float: right;">Registrarse</button>
-          
-          <div class="modal" id="ventanaModal1" tabindex="1" role="dialog" aria-labelledby="tituloVentana1" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 id="tituloVentana1">Iniciar sesión</h5>
-                  <button class="close" data-dismiss="model" aria-label="Cerrar">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+        <button class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#ventanaModal1" style="float: right;">Registrarse</button>
+        
+        <div class="modal" id="ventanaModal1" tabindex="1" role="dialog" aria-labelledby="tituloVentana1" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 id="tituloVentana1">Registrarse</h5>
+                <button class="close"  type="reset" data-dismiss="modal" id="cerrar">
+                  <span aria-hidden="true">&times;</span>
+                </button>
 
-                </div>
-                  <form>
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Correo electrónico</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    </div>
-
-                    <div class="form-group">
-                      <label for="exampleInputEmail1">Nombre</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    </div>
-
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">contraseña</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1">
-                    </div>
-
-                    <div class="form-group">
-                      <label for="exampleInputPassword1">Repetir contraseña</label>
-                      <input type="password" class="form-control" id="exampleInputPassword1">
-                    </div>
-
-                    <div class="form-group form-check">
-                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                      <label class="form-check-label" for="exampleCheck1">No soy un robot</label>
-                    </div>
-                  </form>
-                <div class="modal-footer">
-                  <button class="btn btn-danger" type="button" data-dismiss="modal">
-                    Aceptar
-                  </button>
-                  <button class="btn btn-secondary" type="button" data-dismiss="modal">
-                    Cerrar
-                  </button>
-                </div>
               </div>
-            </div>
-          </div>
-        </form>
-        <!--aquí termina ventana emergente-->
-        <!--aquí empieza ventana emergente INICIO SESION-->
-        <form action="">
-          <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#ventanaModal" style="float: right; margin-right: 5px;">Iniciar sesion</button>
-          
-          <div class="modal" id="ventanaModal" tabindex="1" role="dialog" aria-labelledby="tituloVentana" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 id="tituloVentana">Iniciar sesión</h5>
-                  <button class="close" data-dismiss="model" aria-label="Cerrar">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+              <form id="form1" action="" method="post">
+                  <div class="form-group">
+                    <label for="txtEmail">E-Mail</label>                    
+                    <input id="txtEmail" type="email" class="form-control" name="email" required placeholder="Correo">
+                    <div class="invalid-feedback" id="eEmail"></div>
+                  </div>
 
-                </div>
-                <form>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Correo electrónico</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                    <small id="emailHelp" class="form-text text-muted">Si no recuerda su contraseña haga click
-                      <a href="https://mail.google.com/mail/u/0/">--aquí</a>
-                    </small>
+                    <label for="txtNombre">Nombre</label>
+                    <input type="text" class="form-control" id="txtNombre"  minlength="3" required placeholder="Ingrese nombre">
+                    <div class="invalid-feedback" id="eNombre"></div>
                   </div>
+
                   <div class="form-group">
-                    <label for="exampleInputPassword1">contraseña</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
+                    <label for="contraseña">Contraseña</label>
+                    <input type="password" class="form-control" minlength="6" maxlength="12" id="txtContr" required placeholder="Contraseña">
+                    <div class="invalid-feedback" id="eContr"></div>
                   </div>
+
+                  <div class="form-group">
+                    <label for="contraseña2">Repita contraseña</label>
+                    <input type="password" class="form-control" minlength="6" maxlength="12" id="txtContr2" required placeholder="Repita contraseña">
+                    <div class="invalid-feedback" id="eContr2"></div>
+                    <div class="invalid-feedback" id="eIguales"></div>
+                  </div>
+
                   <div class="form-group form-check">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
                     <label class="form-check-label" for="exampleCheck1">No soy un robot</label>
                   </div>
-                </form>
+                
                 <div class="modal-footer">
-                  <button class="btn btn-danger" type="button" data-dismiss="modal">
-                    Aceptar
-                  </button>
-                  <button class="btn btn-secondary" type="button" data-dismiss="modal">
+                  <button class="btn btn-danger" type="submit" >Registrar</button>
+                  <button class="btn btn-secondary" type="reset" data-dismiss="modal" id="cerrar">
                     Cerrar
                   </button>
-                </div>
+
+              </form>
               </div>
             </div>
           </div>
-        </form>
+        </div>
         <!--aquí termina ventana emergente-->
+         <!--aquí empieza ventana emergente INICIO SESION-->
+         <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#ventanaModal" style="float: right; margin-right: 5px;">Iniciar sesion</button>
+          
+         <div class="modal" id="ventanaModal" tabindex="1" role="dialog" aria-labelledby="tituloVentana" aria-hidden="true">
+           <div class="modal-dialog" role="document">
+             <div class="modal-content">
+               <div class="modal-header">
+                 <h5 id="tituloVentana">Iniciar sesión</h5>
+                 <button class="close"  type="reset" data-dismiss="modal" id="cerrar">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+
+               </div>
+               <form id="form2" action="CAOS NEWS perfil.html" method="post">
+
+                  <div class="form-group">
+                    <label for="txtEmail2">E-Mail</label>
+                    <input id="txtEmail2" type="email" class="form-control" name="email" required placeholder="Correo">
+                    <div class="invalid-feedback" id="eEmail2"></div>
+                  </div>
+
+                  <div class="form-group">
+                    <small id="emailHelp" class="form-text text-muted">Si no recuerda su contraseña haga click
+                    <a href="https://mail.google.com/mail/u/0/">--aquí</a>
+                    </small>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="txtContr3">Contraseña</label>
+                    <input type="password" class="form-control" minlength="6" maxlength="12" id="txtContr3" required placeholder="Contraseña">
+                    <div class="invalid-feedback" id="eContr3"></div>
+                  </div>
+
+                 <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck2" required>
+                    <label class="form-check-label" for="exampleCheck2">No soy un robot</label>
+                  </div>
+               
+               <div class="modal-footer">
+                 <button class="btn btn-danger" type="submit" id="iniciar" onclick="mensaje()">Aceptar</button>
+                 <button class="btn btn-secondary" type="reset" data-dismiss="modal" id="cerrar">
+                   Cerrar
+                  
+                </button>
+                <div class="alert alert-danger" role="alert" hidden id="mensaje">
+                  No ha enviado
+                </div>
+                <div class="alert alert-danger" role="alert" hidden id="mensaje1">
+                  Se ha enviado con EXITO
+                </div>
+                
+              </form>
+               </div>
+             </div>
+           </div>
+         </div>
+       <!--aquí termina ventana emergente-->
         
 
         <br/>
         <div class="container">
           <section class="row">
-            <img src="img/400dpiLogo.png" style="height: 10%; width: 20%; ">
+            <a class="navbar-brand" href="xd.html"><img src="img/400dpiLogo.png" class="zoom" id="logo" style="height: 130px; width: 200px" alt="Logo Caos"></a>
             <div class="col">
               <br/>
             <form class="d-flex">
@@ -261,13 +280,34 @@
           </div> 
          
         </div>   
-        
-        <div class="col-2">
-          <!-- weather widget start --><div id="m-booked-bl-simple-week-vertical-87119"> <div class="booked-wzs-160-275 weather-customize" style="background-color:#137AE9; width:160px;" id="width1 " > <div class="booked-wzs-160-275_in"> <div class="booked-wzs-160-275-data"> <div class="booked-wzs-160-275-left-img wrz-01"></div> <div class="booked-wzs-160-275-right"> <div class="booked-wzs-day-deck"> <div class="booked-wzs-day-val"> <div class="booked-wzs-day-number"><span class="plus">+</span>22</div> <div class="booked-wzs-day-dergee"> <div class="booked-wzs-day-dergee-val">&deg;</div> <div class="booked-wzs-day-dergee-name">C</div> </div> </div> <div class="booked-wzs-day"> <div class="booked-wzs-day-d"><span class="plus">+</span>22&deg;</div> <div class="booked-wzs-day-n"><span class="plus">+</span>12&deg;</div> </div> </div> <div class="booked-wzs-160-275-info"> <div class="booked-wzs-160-275-city smolest">Villa Alemana</div> <div class="booked-wzs-160-275-date">Miércoles, 14</div> </div> </div> </div> <table cellpadding="0" cellspacing="0" class="booked-wzs-table-160"> <tr> <td class="week-day"> <span class="week-day-txt">Jueves</span></td> <td class="week-day-ico"><div class="wrz-sml wrzs-01"></div></td> <td class="week-day-val"><span class="plus">+</span>26&deg;</td> <td class="week-day-val"><span class="plus">+</span>13&deg;</td> </tr> <tr> <td class="week-day"> <span class="week-day-txt">Viernes</span></td> <td class="week-day-ico"><div class="wrz-sml wrzs-01"></div></td> <td class="week-day-val"><span class="plus">+</span>25&deg;</td> <td class="week-day-val"><span class="plus">+</span>13&deg;</td> </tr> <tr> <td class="week-day"> <span class="week-day-txt">Sábado</span></td> <td class="week-day-ico"><div class="wrz-sml wrzs-03"></div></td> <td class="week-day-val"><span class="plus">+</span>23&deg;</td> <td class="week-day-val"><span class="plus">+</span>12&deg;</td> </tr> <tr> <td class="week-day"> <span class="week-day-txt">Domingo</span></td> <td class="week-day-ico"><div class="wrz-sml wrzs-03"></div></td> <td class="week-day-val"><span class="plus">+</span>25&deg;</td> <td class="week-day-val"><span class="plus">+</span>13&deg;</td> </tr> <tr> <td class="week-day"> <span class="week-day-txt">Lunes</span></td> <td class="week-day-ico"><div class="wrz-sml wrzs-03"></div></td> <td class="week-day-val"><span class="plus">+</span>25&deg;</td> <td class="week-day-val"><span class="plus">+</span>13&deg;</td> </tr> <tr> <td class="week-day"> <span class="week-day-txt">Martes</span></td> <td class="week-day-ico"><div class="wrz-sml wrzs-03"></div></td> <td class="week-day-val"><span class="plus">+</span>26&deg;</td> <td class="week-day-val"><span class="plus">+</span>15&deg;</td> </tr> </table> <div class="booked-wzs-center"> <span class="booked-wzs-bottom-l">Previsión para 7 días</span> </div> </a> </div> </div> </div><script type="text/javascript"> var css_file=document.createElement("link"); var widgetUrl = location.href; css_file.setAttribute("rel","stylesheet"); css_file.setAttribute("type","text/css"); css_file.setAttribute("href",'https://s.bookcdn.com/css/w/booked-wzs-widget-160x275.css?v=0.0.1'); document.getElementsByTagName("head")[0].appendChild(css_file); function setWidgetData_87119(data) { if(typeof(data) != 'undefined' && data.results.length > 0) { for(var i = 0; i < data.results.length; ++i) { var objMainBlock = document.getElementById('m-booked-bl-simple-week-vertical-87119'); if(objMainBlock !== null) { var copyBlock = document.getElementById('m-bookew-weather-copy-'+data.results[i].widget_type); objMainBlock.innerHTML = data.results[i].html_code; if(copyBlock !== null) objMainBlock.appendChild(copyBlock); } } } else { alert('data=undefined||data.results is empty'); } } var widgetSrc = "https://widgets.booked.net/weather/info?action=get_weather_info;ver=7;cityID=273205;type=4;scode=124;ltid=3457;domid=582;anc_id=39100;countday=undefined;cmetric=1;wlangID=4;color=137AE9;wwidth=160;header_color=ffffff;text_color=333333;link_color=08488D;border_form=1;footer_color=ffffff;footer_text_color=333333;transparent=0;v=0.0.1";widgetSrc += ';ref=' + widgetUrl;widgetSrc += ';rand_id=87119';widgetSrc += ';wstrackId=65108094';var weatherBookedScript = document.createElement("script"); weatherBookedScript.setAttribute("type", "text/javascript"); weatherBookedScript.src = widgetSrc; document.body.appendChild(weatherBookedScript) </script><!-- weather widget end -->
-
-          <br/> 
+        <!--CLIMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->
+        <!--<div class="col-2">
+          <div id="tiempo">
+            <h1>El Tiempo</h1>
+            <hr>
+            <h3 id="estacion"></h3>
+            <h4 id="temperatura"></h4>
+            <h5 id="estado"></h5>
+            
+          
+            
+            
+            <select name="clima" id="clima">
+                <option value="0">Selecciona clima</option>
+            </select>
+            <hr>
+            <button id="verClima" class="btn btn-danger">Ver clima</button>
+  
+  
+  
+            </select>
+              
+  
+          </div>
            
-        </div>
+        </div> -->
+        <!--CLIMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA-->
+
       </div>
       <hr class="my-4">
       <section class="row">
@@ -415,7 +455,7 @@
           <img src="img/400dpiLogo.png" style="height: 90%; width: 70%;">
         </footer>
         <footer class="col-4" style="margin-top: 2%;">
-          <a href="" style="color: rgb(241, 241, 241);"><h5>Contacto</h5></a>
+          <a href="CAOS NEWS contacto.html" style="color: rgb(241, 241, 241);"><h5>Contacto</h5></a>
           <a href="" style="color: rgb(241, 241, 241);"><h5>Términos y condiciones</h5></a>
           <a href="" style="color: rgb(241, 241, 241);"><h5>Política de privacidad</h5></a>
           <a href="" style="color: rgb(241, 241, 241);"><h5>Tarifas de publicidad</h5></a>
@@ -433,5 +473,8 @@
   <script src="js/popper.js"></script>
   <script src="js/bootstrap.js"></script>
   <script src="popup.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/validacion.js"></script>
+  <script src="js/validacion - iniciosesion.js"></script>
 </body>
 </html>
