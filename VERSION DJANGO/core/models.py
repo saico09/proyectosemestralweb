@@ -49,3 +49,12 @@ class Publicar(models.Model):
     def __str__(self):
 
         return self.categoria
+
+class Imagen(models.Model):
+
+    fotoperfil= models.ImageField(null=True, verbose_name='image')
+
+
+    def __str__(self):
+
+        return self.fotoperfil

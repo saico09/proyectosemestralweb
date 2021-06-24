@@ -1,6 +1,7 @@
 from core.models import Publicar
+from core.models import Registrar
 from core.forms import ContactoForm,RegistrarForm,PublicarForm
-from django.shortcuts import render,redirect
+from django.shortcuts import redirect, render
 
 
 def index(request):
@@ -41,15 +42,24 @@ def politica(request,categoria):
 
     return render (request,'core/CAOS NEWS 1politica.html',datos)
 
-
-
 def perfil(request):
+        
     publicaciones=Publicar.objects.all()
 
     datos = {
         'publicaciones': publicaciones
     }
     return render (request,'core/CAOS NEWS perfil.html',datos)
+
+def perfil2(request,id):
+        
+    perfil=Registrar.objects.filter(id=id)
+
+    datos = {
+        'perfil': perfil
+    }
+
+    return render (request,'core/CAOS NEWS perfil copia.html',datos)
 
 
 def publicar(request):
@@ -94,11 +104,32 @@ def noticia(request,id):
     return render (request,'core/CAOS NEWS NOTICIA.html',datos)
 
 
+def carrucel(request):
+    publicaciones=Publicar.objects.all()
 
+    datos = {
+        'publicaciones': publicaciones
+    }
+    return render (request,'core/index.html',datos) 
 
 def eliminar(request,id):
     publicaciones=Publicar.objects.get(id=id)
 
     publicaciones.delete()
 
-    return redirect(to="perfil") 
+    return redirect(to="perfil")
+
+def periodistas(request):
+    periodistas=Registrar.objects.all()
+
+    datos = {
+        'periodistas': periodistas
+    }
+    return render (request,'core/CAOS NEWS periodistas.html',datos)
+
+def eliminarpe(request,id):
+    periodistas=Registrar.objects.get(id=id)
+
+    periodistas.delete()
+
+    return redirect(to="periodistas")

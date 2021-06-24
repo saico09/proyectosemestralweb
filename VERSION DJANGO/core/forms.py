@@ -1,5 +1,6 @@
 from .models import Categoria, Contacto,Registrar,Publicar
-from django.forms import ModelForm
+from django.forms import ModelForm, fields
+from django import forms
 
 
 class ContactoForm(ModelForm):
