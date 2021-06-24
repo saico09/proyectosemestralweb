@@ -1,5 +1,6 @@
 {% load static %}
 {% load bootstrap4 %}
+{% load crispy_forms_tags %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,13 +8,14 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CaosNews Politica</title>
+  <title>CaosNews Tyler</title>
   {% bootstrap_css %}
 
   <link rel="stylesheet" href="{% static 'core/css/estilos.css' %}">
   <link rel="stylesheet" href="{% static 'core/css/bootstrap.css' %}">
+  
   <link  rel="icon"   href="{% static 'core/img/400dpiLogo.png' %}" type="image/png" />
-
+  <script language="javascript" type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.min.js"></script>
   <style>
     li{
       margin-left: 5px;
@@ -35,7 +37,7 @@
   <div class="container-fluid">
       <header class="row">
         <header class="col">          
-          <!--aquí empieza ventana emergente REGISTRARSE-->
+          <!--aquí empieza ventana emergente INICIAR SESION-->
           <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#ventanaModal1" style="float: right;">Cerrar sesion</button>
           
           <div class="modal" id="ventanaModal1" tabindex="1" role="dialog" aria-labelledby="tituloVentana1" aria-hidden="true">
@@ -51,7 +53,7 @@
                   
                 <div class="modal-footer">
                   <a class="btn btn-primary" href="{% url 'index' %}" role="button" style="background-color: red;">Aceptar</a>
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">
+                  <button class="btn btn-secondary" type="button" data-dismiss="modal">
                     Cancelar
                   </button>
                 </div>
@@ -93,9 +95,6 @@
                   <a class="nav-link" href="{% url 'politica' 21%}">Economía</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Economía</a>
-                </li>
-                <li class="nav-item">
                   <a class="nav-link" href="#">Deportes</a>
                 </li>
                 <li class="nav-item">
@@ -111,103 +110,66 @@
                   <a class="nav-link" href="#">Regionales</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="{% url 'perfil' %}">Perfil</a>
+                  <a class="nav-link" href="{% url 'perfil' %}" style="float: right;">Perfil <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="{% url 'periodistas' %}">Periodistas</a>
                 </li>
-
                 <div style="float: right;">
-                  <img src="{% static 'core/img/logo-instagram-3238899_640.png'%}" alt="" width="10%" style="float: right; padding-right: 1%;padding-bottom: 1%;">
-                  <img src="{% static 'core/img/facebook.png'%}" alt="" width="10%" style="float: right; padding-right: 1%;padding-bottom: 1%;">
-                  <img src="{% static 'core/img/twitter-gris.png'%}" alt="" width="10%" style="float: right; padding-right: 1%;padding-bottom: 1%;">
+                  <img src="img/logo-instagram-3238899_640.png" alt="" width="10%" style="float: right; padding-right: 1%;padding-bottom: 1%;">
+                  <img src="img/facebook.png" alt="" width="10%" style="float: right; padding-right: 1%;padding-bottom: 1%;">
+                  <img src="img/twitter-gris.png" alt="" width="10%" style="float: right; padding-right: 1%;padding-bottom: 1%;">
                 </div>
-                
               </ul>
             </div>
           </nav>
         </div>  
       </div>  
 
+      
+      <div class="row">
+        <br>
+
+        <div class="col-11" style="background-color: white; margin-left: 3%;">
+          <form action="" method ="POST" id="formulario" novalidate>
+            {% csrf_token %}
+            <div class="form-group"> <br>
+            {{ form|crispy}}
+            </div>
+    
+    
+        
+            <hr class="my-4">
+            <div class="form-group">
+              <button class="btn btn-danger" type="submit" onclick="mensaje()">Enviar</button>
+              
+                
+              
+
+          </form>
+          <br>
+          <div class="alert alert-danger" role="alert" hidden id="mensaje">
+            No enviado
+          </div>
+          <div class="alert alert-danger" role="alert" hidden id="mensaje1">
+            Se ha enviado con EXITO
+          </div>
+          <br>
+        </div>
+
+      </div>
+
+
+
+
+
+
+
+
+
+
 
       
-    <div class="row">
-      <div class="col-8" style="margin-left: 4%;background-color: rgb(255, 255, 255); ">
-        </br>
-
-
-       
-
-        <table class="table table-hover">
-
-          {%for ve in politica%}
-          <div class="card mb-3" style="height: 330px;">
-            <div class="row no-gutters">
-              <div class="col-md-4">
-                <img src="{{ ve.foto.url }}" width="100%" style="margin-top: 10%;">
-              </div>
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h5 class="card-title" >{{ve.titulo}}</h5>
-                  <p class="card-text">{{ve.lead}}</p>
-                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small>
-                    <a class="btn btn-danger" href="{% url 'noticia' ve.id %}" role="button" style="float: right;">Leer mas</a>
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
-          {% endfor %}
-        </table>
-
-        <div style="background-color: white;">
-          <nav aria-label="Page navigation example" style="background-color: white;">
-            <ul class="pagination justify-content-center">
-              <li class="page-item disabled">
-                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-              </li>
-              <li class="page-item active"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item">
-                <a class="page-link" href="#">Next</a>
-              </li>
-            </ul>
-          </nav>
-        </div>
-
-      </div>
-      <div class="col-3" style="background-color: white; text-rendering: geometricPrecision;margin-left: 4%;float: right; ">
-        </br>
-        <div class="card" style="width: 18rem;">
-          <img src="{% static 'core/img/im2.jpg'%}" class="card-img-top" alt="..." style="width: 100%;">
-          <div class="card-body">
-            <h5 class="card-title">«El sueldo no me alcanza»: mujer pide su tercer retiro y saca aplausos…</h5>
-            <p class="card-text">Esta mañana en «Bienvenidos», en medio de un debate por el tercer retiro del 10% donde...</p>
-            <a href="#" class="btn btn-danger">Seguir Leyendo</a>
-            <span class="badge badge-secondary">Economía</span>
-          </div>
-        </div>
-        <hr class="my-4">
-
-        <div class="card" style="width: 18rem;">
-          <img src="{% static 'core/img/im4.jpg'%}" class="card-img-top" alt="..." style="width: 100%;">
-          <div class="card-body">
-            <h5 class="card-title">Tati Penna: El polémico despido del CNTV que golpeó la recta final de una brillante carrera en TV</h5>
-            <p class="card-text">Un golpe bajo recibió este miércoles el mundo de la televisión. A sus 61 años, falleció...</p>
-            <a href="#" class="btn btn-danger">Seguir Leyendo</a>
-            <span class="badge badge-secondary">Espectáculo</span>
-          </div>
-        </div>
-
-        <img src="{% static 'core/img/didi.png'%}" alt="" style="margin: 10% 10% 10% 10%; width: 90%; ">
-        <a href="" style="text-align: center;"><p>www.didi.cl</p></a>
-        <hr class="my-4">
-        <img src="{% static 'core/img/coca.png.png'%}" alt="" style="margin: 10% 10% 10% 10%; width: 90%; text-align: center;">
-        <a href="" style="text-align: center;"><p>www.coke.cl</p></a>
-      </div>
-
-    <br>
 
       <footer class="row">
         <footer class="col-4">
