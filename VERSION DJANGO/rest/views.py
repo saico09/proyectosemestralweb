@@ -3,15 +3,16 @@ from django.shortcuts import render
 from core.models import Registrar
 from rest_framework.response import Response
 from django.views.decorators.csrf import csrf_exempt
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
 from rest_framework import serializers
 from rest_framework.parsers import JSONParser
 from rest_framework import status
-
+from rest_framework.permissions import IsAuthenticated
 
 
 @csrf_exempt
-@api_view (['GET','POST'])                       
+@api_view (['GET','POST','DELETE'])
+@permission_classes((IsAuthenticated,))
 def procesar_periodistas(request):
 
     if request.method == 'GET':
@@ -50,9 +51,3 @@ def detalle_periodista(request,id):
     if request.method == 'DELETE':
         periodistas.delete()
         return Response(status.HTTP_204_NO_CONTENT)
-
-
-
-
-
-

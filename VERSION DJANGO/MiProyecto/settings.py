@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'bootstrap4',
     'crispy_forms',
     'rest_framework', #pip install djangorestframework
+    'rest_framework.authtoken',
     #LIBRERIAS DJANGO
     'django.contrib.admin',
     'django.contrib.auth',
@@ -46,6 +47,12 @@ INSTALLED_APPS = [
     'core',
     'rest', #django-admin startapp rest
 ]
+
+REST_FRAMEWORK = {
+        'DEFAULT_AUTHENTICATION_CLASSES' : [
+            'rest_framework.authentication.TokenAuthentication'    
+        ]
+}
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
@@ -88,11 +95,11 @@ DATABASES = {
 
         'ENGINE': 'django.db.backends.oracle', #Necesito haber instalado el paquete cx_oracle (pip)
 
-        'NAME': '127.0.0.1:1521/xe',
+        'NAME': '127.0.0.1:1521/xepdb1',
 
-        'USER': 'proyecto_django',
+        'USER': 'PROYECTO_DJANGO',
 
-        'PASSWORD':'proyecto',
+        'PASSWORD':'PROYECTO',
 
         'TEST':{
 
