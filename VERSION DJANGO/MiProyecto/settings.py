@@ -97,9 +97,9 @@ DATABASES = {
 
         'NAME': '127.0.0.1:1521/xepdb1',
 
-        'USER': 'PROYECTO_DJANGO',
+        'USER': 'USUARIO1',
 
-        'PASSWORD':'PROYECTO',
+        'PASSWORD':'oracle',
 
         'TEST':{
 
